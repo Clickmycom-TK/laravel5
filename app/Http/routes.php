@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hello', function() {
+    return 'Hello';
+});
+
+Route::get('world', function() {
+    return 'World';
+});
+
+Route::get('foo', 'FooController@index');
+
+Route::group(['middleware' => ['api']], function () {
+     Route::resource('employees', 'Api\EmployeeController', [
+        'except' => ['create', 'edit']
+    ]);
+});
